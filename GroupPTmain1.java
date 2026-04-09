@@ -1,0 +1,169 @@
+package performanceTask;
+import java.util.Scanner;
+public class GroupPTmain1 {
+
+	public static void main(String[] args) {
+			Scanner scan = new Scanner (System.in);
+			
+			int system;
+			String accountStatus = ""; 
+			String number = "";
+			String mpin = "";
+			
+			// predefined, aka the stored data
+			String systemNumber = "611149105"; 
+			String systemMpin = "6969";
+			
+			System.out.println("   ===================================================");
+			System.out.println("=====                Welcome to GoApp              ======");
+			System.out.println("   ==================================================="); System.out.println();
+			
+			// 1. NEW or EXISTING //
+			while (!accountStatus.equals("new") && !accountStatus.equals("existing")) {
+				System.out.print("New or Existing account? ");
+				accountStatus = scan.next().toLowerCase().trim(); 
+				if (!accountStatus.equals("new") && !accountStatus.equals("existing")) {
+					System.out.println("Please try again. "); System.out.println(); }	}
+		
+			switch (accountStatus) {
+			case "new": // 1.1 NEW 
+				while (number.length() != 9) {
+					System.out.print("Please enter your Philippine mobile number: 09");
+					number = scan.next(); 
+					if (number.equals(systemNumber)) {
+						System.out.println("Account already exists. Please sign in."); System.exit(0);
+						number = "";}
+					else if (number.length() != 9) {
+						System.out.println("Philippine mobile number does not exist. Please try again."); System.out.println(); }	}
+				while (mpin.length()!=4) {
+					System.out.print("Please enter your 4-digit MPIN: "); 
+					mpin = scan.next(); 
+					if (mpin.length()!=4) {
+						System.out.println("Invalid MPIN. Please try again"); System.out.println(); }	}
+				System.out.println(); System.out.println("Account successfully created! Login Successfully!"); 
+			break;		
+			
+			case "existing": // 1.2 EXISTING
+			while (!number.equals(systemNumber)) { 
+				System.out.print("Please enter your Philippine mobile number: 09");
+				number = scan.next(); 
+				if (number.length() != 9) {
+					System.out.println("Philippine mobile number does not exist. Please try again."); System.out.println(); }	
+				else if (!number.equals(systemNumber)) {
+					System.out.println("Account does not exist. Please create an account."); System.exit(0); }	}
+				while (!mpin.equals(systemMpin)) {
+					System.out.print("Please enter your MPIN: ");
+					mpin = scan.next();  
+				if (!mpin.equals(systemMpin)) {
+					System.out.println("Invalid MPIN. Please try again."); System.out.println(); }	}
+				System.out.println(); System.out.println("Login Successfully!");
+			break; }
+			
+			// 2.0 GoApp
+			System.out.println(); System.out.println("Welcome to the GoApp!"); 
+			
+			for (system = 1; system >0; system++) {
+				System.out.println();
+				
+				String sys = "";
+				String modeEfficiency = ""; 
+				String modeTransportation = "";
+				String discount = ""; 
+				double distance = 0; 
+				double cost = 0; 
+				
+				// 2.1 CHEAPEST OR FASTEST
+				while (!modeEfficiency.equals("cheapest") && !modeEfficiency.equals("fastest")) {
+					System.out.println("[  Cheapest  |  Fastest  ]");
+					System.out.print("Please select efficiency mode of transportation: ");
+					modeEfficiency = scan.next().toLowerCase().trim();
+					if (!modeEfficiency.equals("cheapest") && !modeEfficiency.equals("fastest")) {
+						System.out.println("Invalid mode of efficiency. Please try again."); System.out.println(); }	}
+				
+				// 2.2 MODE OF TRANSPORTATION
+				switch(modeEfficiency) {
+				case "cheapest":
+					while (!modeTransportation.equals("jeep") && !modeTransportation.equals("bus")) {
+						System.out.println(); System.out.println("[    Jeep     |     Bus    ]");
+						System.out.print("Select mode of transportation: ");
+						modeTransportation = scan.next().toLowerCase().trim(); 
+						if (!modeTransportation.equals("jeep") && !modeTransportation.equals("bus")) {
+							System.out.println("Invalid mode of transportation. Please try again."); }	}
+					break;		
+				case "fastest": 
+					while (!modeTransportation.equals("taxi")) {
+						System.out.println(); System.out.println("[        Taxi        ]");
+						System.out.print("Select mode of transportation: ");
+						modeTransportation = scan.next().toLowerCase().trim(); 
+						if (!modeTransportation.equals("taxi")) {
+							System.out.println("Invalid mode of transportation. Please try again."); }	}
+					break;	}
+				
+				// 2.3 DISCOUNT
+				while (!discount.equals("regular") && !discount.equals("student") && !discount.equals("senior") && !discount.equals("pwd")) {
+					System.out.println(); System.out.println("[ Regular | Student | Senior | PWD ]");
+					System.out.print("Select fare type: ");
+					discount = scan.next().toLowerCase().trim();
+					if (!discount.equals("regular") && !discount.equals("student") && !discount.equals("senior") && !discount.equals("pwd")) {
+						System.out.println("Please try again."); }	}
+				
+				// 2.4 DISTANCE  
+				while (distance < 1) {
+					System.out.println(); System.out.print("Enter total distance (km): ");
+					distance = scan.nextLong();
+					if (distance < 1)
+						System.out.println("Please try again."); }
+				
+				// 2.5 CALCULATIONS, TOTAL AND BYEBYE
+				if (modeTransportation.equals("jeep") && discount.equals("regular")) {
+					if (distance > 4) {
+						cost = 13 + (1*(distance-4)); }
+					else {
+						cost = 13; } }
+				else if (modeTransportation.equals("jeep")) {
+					if (distance > 4) {
+						cost = 10.40 + (1*(distance-4)); }
+					else {
+						cost = 10.40; }	}
+				if (modeTransportation.equals("bus") && discount.equals("regular")) {
+					if (distance > 4) {
+						cost = 13 + (2.25*(distance-4)); }
+					else {
+						cost = 13; } }
+				else if (modeTransportation.equals("bus")) {
+					if (distance > 4) {
+						cost = 10.50 + (1.75*(distance-4)); } 
+					else {
+						cost = 10.50; } }
+				if (modeTransportation.equals("taxi") && discount.equals("regular")) {
+					if (distance > 1) {
+						cost = 45 + (13.75*(distance-1)); }
+					else {
+						cost = 45; } }
+				else if (modeTransportation.equals("taxi")) {
+					if (distance > 1) {
+						cost = 45 + (13.75*(distance-1));
+						cost *= .80;}
+					else {
+						cost = 45; } }
+				
+				System.out.println(); System.out.println("Total cost: ₱" +cost ); System.out.println();
+				
+				while (!sys.equals("no") && !sys.equals("yes")) {
+					System.out.println("[  Yes  |  No  ]");
+					System.out.print("Do you wish to continue? "); 
+					sys = scan.next().toLowerCase().trim(); 
+					if (sys.equals("yes")) {
+						system = 0; }
+					else if (sys.equals("no")) {
+						system = -1; }	} 	}
+			
+			System.out.println(); System.out.println("Thank you for using GoApp!");
+			
+			
+			
+
+			
+
+	}
+	}
