@@ -74,7 +74,7 @@ public class GroupPTmain1 {
 				
 				// 2.1 CHEAPEST OR FASTEST
 				while (!modeEfficiency.equals("cheapest") && !modeEfficiency.equals("fastest")) {
-					System.out.println("[  Cheapest  |  Fastest  ]");
+					System.out.println("[  A Cheapest  |  Fastest  ]");
 					System.out.print("Please select efficiency mode of transportation: ");
 					modeEfficiency = scan.next().toLowerCase().trim();
 					if (!modeEfficiency.equals("cheapest") && !modeEfficiency.equals("fastest")) {
