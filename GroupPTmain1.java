@@ -1,4 +1,4 @@
-package performanceTask;
+package GroupPTmain1;
 import java.util.Scanner;
 public class GroupPTmain1 {
 
@@ -15,7 +15,7 @@ public class GroupPTmain1 {
 			String systemMpin = "6969";
 			
 			System.out.println("   ===================================================");
-			System.out.println("=====                Welcome to GoApp              ======");
+			System.out.println("=====                MIC CHECK             ======");
 			System.out.println("   ==================================================="); System.out.println();
 			
 			// 1. NEW or EXISTING //
