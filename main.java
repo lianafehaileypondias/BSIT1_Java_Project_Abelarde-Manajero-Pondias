@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.regex.*;
 
 	public class FinalProject
 	{
@@ -6,12 +7,22 @@ import java.util.*;
 		public static void main(String[] args) {
 	    Scanner scan = new Scanner(System.in);
 
+		String route = askRoute(scan);
+		
 	    String currLoc = askCurrLoc(scan);
 	    String destinationLoc = askDesLoc(scan);
 	    
 	}
 
-	// 1. ASK CURRENT LOCATION //
+	// 1.1 ASK ROUTE //
+	static int askRoute(Scanner scan)
+	{
+		System.out.print("Route (1. Bago-Roxas | 2. Roxas-Bago): ");
+		String route = scan.nextInt();
+		return route;
+	}
+
+	// 1.2 ASK CURRENT LOCATION //
 	static String askCurrLoc(Scanner scan)
 	{
 		System.out.print("Current Location: ");
@@ -19,7 +30,7 @@ import java.util.*;
 		return currLoc;
 	}
 
-	// 1.1 ASK DESTINATION LOCATION //
+	// 1.3 ASK DESTINATION LOCATION //
 	static String askDesLoc(Scanner scan)
 	{
 		System.out.print("Destination Location: ");
@@ -31,54 +42,32 @@ import java.util.*;
 	static String determineRoute(String currLoc, String destinationLoc)
 	{
 		ArrayList<String> brStops = new ArrayList<>();
-		    brStops.add("Bago Aplaya"); 
-		    brStops.add("Puan Crossing");
-		    brStops.add("Ulas");
-		    brStops.add("DXSS (Bangkal)"); 
-		    brStops.add("Tahimik Avenue"); 
-		    brStops.add("Matina Crossing");
-		    brStops.add("ABS-CBN Junction");
-		    brStops.add("SM City Davao"); 
-		    brStops.add("Ecoland Terminal Crossing");
-		    brStops.add("Almendras Gym");
-		    brStops.add("Roxas Avenue");
+		    b2rStops.add("Bago Aplaya"); 
+		    b2rStops.add("Puan Crossing");
+		    b2rStops.add("Ulas");
+		    b2rStops.add("DXSS (Bangkal)"); 
+		    b2rStops.add("Tahimik Avenue"); 
+		    b2rStops.add("Matina Crossing");
+		    b2rStops.add("ABS-CBN Junction");
+		    b2rStops.add("SM City Davao"); 
+		    b2rStops.add("Ecoland Terminal Crossing");
+		    b2rStops.add("Almendras Gym");
+		    b2rStops.add("Roxas Avenue");
 
 		ArrayList<String> rbStops = new ArrayList<>();
-		   	rbStops.add("Roxas Avenue");
-			rbStops.add("Almendras Gym");
-			rbStops.add("Ecoland Terminal Crossing");
-		   	rbStops.add("Tulip Drive");
-		   	rbStops.add("La Suerte Gallera");
-		   	rbStops.add("Matina Crossing"); 
-		   	rbStops.add("Tahimik Avenue");
-		   	rbStops.add("DXSS (Bangkal)");
-		   	rbStops.add("Ulas");
-		   	rbStops.add("Puan Crossing");
-		   	rbStops.add("Bago Aplaya");
+		   	r2bStops.add("Roxas Avenue");
+			r2bStops.add("Almendras Gym");
+			r2bStops.add("Ecoland Terminal Crossing");
+		   	r2bStops.add("Tulip Drive");
+		   	r2bStops.add("La Suerte Gallera");
+		   	r2bStops.add("Matina Crossing"); 
+		   	r2bStops.add("Tahimik Avenue");
+		   	r2bStops.add("DXSS (Bangkal)");
+		   	r2bStops.add("Ulas");
+		   	r2bStops.add("Puan Crossing");
+		   	r2bStops.add("Bago Aplaya");
 
-			for (int i=0; )
-
-		for (int i=0; i < routeStops.size(); i++)
-		{
-			if (routeStops.indexOf(currLoc))
-		}
-
-
-		    int currLocIndex = routeStops.indexOf(currLoc);
-		    int desLocIndex = routeStops.indexOf(destinationLoc);
-
-		    if (currLocIndex < desLocIndex) 
-		    {
-        		return "Bago Aplaya-Roxas Avenue Route";
-		    } 
-		    else if (currLocIndex > desLocIndex) 
-		    {
-		        return "Roxas Avenue-Bago Aplaya Route";
-		    } 
-		    else 
-		    {
-		        return "Current/Destination Locations are the same";
-		    }
+			
 	}
 
 }
