@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.regex.*;
 
-	public class FinalProject
+	public class Main
 	{
 		// MAIN //
 		public static void main(String[] args) 
