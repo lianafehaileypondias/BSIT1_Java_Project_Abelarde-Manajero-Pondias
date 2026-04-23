@@ -49,9 +49,10 @@ import java.util.regex.*;
 	        printLocs(route, currLoc, desLoc);
 		}
 
-    // ASK ROUTE
+    // 1.1 ASK ROUTE
     static ArrayList<String> askRoute(Scanner scan)
     {
+		// 
         System.out.print("Route (1. Bago-Roxas | 2. Roxas-Bago): ");
         int routeChoice = scan.nextInt();
         scan.nextLine();
@@ -92,18 +93,21 @@ import java.util.regex.*;
         }
     }
 
+	// 1.2 ASK CURRENT LOCATION //
     static String askCurrLoc(Scanner scan)
     {
         System.out.print("Current Location: ");
         return scan.nextLine();
     }
 
+	// 1.3 ASK DESTINATION LOCATION //
     static String askDesLoc(Scanner scan)
     {
         System.out.print("Destination Location: ");
         return scan.nextLine();
     }
 
+	// 1.4 PRINT LOCATIONS //
     static void printLocs(ArrayList<String> route, String currLoc, String desLoc)
     {
     	 System.out.println("Your ride: " + currLoc + " - " + desLoc);
