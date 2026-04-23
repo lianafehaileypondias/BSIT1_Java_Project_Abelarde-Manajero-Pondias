@@ -106,6 +106,6 @@ import java.util.regex.*;
 
     static void printLocs(ArrayList<String> route, String currLoc, String desLoc)
     {
-    	 System.out.println("Valid route: " + currLoc + " - " + desLoc);
+    	 System.out.println("Your ride: " + currLoc + " - " + desLoc);
     }
 }
