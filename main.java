@@ -7,7 +7,7 @@ import java.util.regex.*;
 		public static void main(String[] args) 
 		{
 		    Scanner scan = new Scanner(System.in);
-			// Enum for BA-R route // PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM
+			// Enum for BA-R route //
 			enum B2RRoute 
 			{
 			    DXSS(4), TAHIMIK(5), MATINA(6), ABSCBN(7),
@@ -36,7 +36,7 @@ import java.util.regex.*;
 	    
 		}
 
-	// 1.1 ASK ROUTE // // PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM
+	// 1.1 ASK ROUTE //
 	static int askRoute(Scanner scan)
 	{
 		System.out.print("Route (1. Bago-Roxas | 2. Roxas-Bago): ");
