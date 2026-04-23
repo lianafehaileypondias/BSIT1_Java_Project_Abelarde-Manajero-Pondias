@@ -1,45 +1,17 @@
 import java.util.*;
 import java.util.regex.*;
 
-	public class main
+	public class piste
 	{
 		// MAIN //
 		public static void main(String[] args) 
 		{
 		    Scanner scan = new Scanner(System.in);
-				// Enum for BA-R route //
-			// enum B2RRoute 
-			// {
-			//     DXSS (Bangkal)(4), 
-            //     Tahimik Avenue(5), 
-            //     Matina Crossing(6), 
-            //     ABS-CBN Junction(7),
-            //     SM City Davao(9), 
-            //     Ecoland Terminal Crossing(9), 
-            //     Almendras Gym(10), 
-            //     Roxas Avenue(11);
-                
-			//     private final int km;
-			//     B2RRoute(int km) { this.km = km; }
-			//     public int getKm() { return km; }
-			// }
+
+		    // LOG IN //
+
+
 			
-			// // Enum for R-BA route 
-			// enum R2BRoute 
-			// {
-            //     Tulip Drive(4), 
-            //     La Suerte Gallera(5), 
-            //     Matina Crossing(6), 
-            //     Tahimik Avenue(7),
-            //     DXSS (Bangkal)(8), 
-            //     Ulas(9), 
-            //     Puan(10), 
-            //     Bago Aplaya(11);
-			
-			//     private final int km;
-			//     R2BRoute(int km) { this.km = km; }
-			//     public int getKm() { return km; }
-			// }
 			
 			ArrayList<String> route = askRoute(scan);
 
@@ -50,6 +22,12 @@ import java.util.regex.*;
 	        
 	
 	        printLocs(route, currLoc, desLoc);
+	        
+	        int distance = computeDistance(route, currLoc, desLoc);
+	        System.out.println("Distance: " + distance);
+
+	        double fare = computeFare(distance, scan);
+	        System.out.println("Fare: Php " + fare);
 		}
 
     // 1.1 ASK ROUTE
@@ -112,15 +90,73 @@ import java.util.regex.*;
         	}
         	else
         	{
-        		System.out.println("Your ride: " + currLoc + " - " + desLoc);
+        		System.out.println("Your ride: " + currLoc + " -> " + desLoc);
         	}
         }
         else 
         {
-            System.out.println("Invalid");
+            System.out.println("Invalid locations. Consider taking the other route...");
         }
-
-		
-
     }
+
+    static int computeDistance(ArrayList<String> route, String currLoc, String desLoc) {
+    int currIndex = route.indexOf(currLoc);
+    int desIndex = route.indexOf(desLoc);
+
+    if (currIndex == -1 || desIndex == -1 || currIndex > desIndex) 
+    {
+        return -1;
+    }
+
+    return desIndex - currIndex; // distance in stops
+	}
+
+	static double computeFare(int distance, Scanner scan)
+	{
+	 	double regFare = 12.00;
+	 	double baseFare = 0; 
+	 	double discRate = 0;
+	 	double discAmount = 0;
+	 	double fare = 0;
+
+		if (distance <= 4)
+		{
+			baseFare = regFare;
+		}
+		else if (distance > 4)
+		{
+			baseFare = regFare + (1.80 * (distance - 4));
+		}
+
+		// Computation of Discount: type of passenger
+		System.out.print("Regular (R) / Student (St) / Senior (Sr) / PWD Passenger (PWD): ");
+		String passType = scan.nextLine();
+
+		switch (passType)
+		{
+			case "R":
+				discRate = 0.00;
+				break;
+			case "St":
+				discRate = 20.00;
+				break;
+			case "Sr":
+				discRate = 20.00;
+				break;
+			case "PWD":
+				discRate = 20.00;
+				break;
+			default:
+				System.out.println("Invalid Choice."); 
+				break;
+		}
+
+		discAmount = baseFare - (baseFare * discRate);
+		fare = discAmount;
+
+		return fare;
+	}
+
+
 }
+
