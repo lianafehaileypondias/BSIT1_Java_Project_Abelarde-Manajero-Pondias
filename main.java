@@ -7,25 +7,37 @@ import java.util.regex.*;
 		public static void main(String[] args) 
 		{
 		    Scanner scan = new Scanner(System.in);
-			// Enum for BA-R route //
+				// Enum for BA-R route //
 			enum B2RRoute 
 			{
-			    DXSS(4), TAHIMIK(5), MATINA(6), ABSCBN(7),
-			    SM(9), ECOLAND(9), ALMENDRAS(10), ROXAS(11);
-			
+			    DXSS (Bangkal)(4), 
+                Tahimik Avenue(5), 
+                Matina Crossing(6), 
+                ABS-CBN Junction(7),
+                SM City Davao(9), 
+                Ecoland Terminal Crossing(9), 
+                Almendras Gym(10), 
+                Roxas Avenue(11);
+                
 			    private final int km;
-			    BARRoute(int km) { this.km = km; }
+			    B2RRoute(int km) { this.km = km; }
 			    public int getKm() { return km; }
 			}
 			
 			// Enum for R-BA route 
 			enum R2BRoute 
 			{
-			    TULIP(4), LASUERTE(5), MATINA(6), TAHIMIK(7),
-			    DXSS(8), ULAS(9), PUAN(10), BAGO(11);
+                Tulip Drive(4), 
+                La Suerte Gallera(5), 
+                Matina Crossing(6), 
+                Tahimik Avenue(7),
+                DXSS (Bangkal)(8), 
+                Ulas(9), 
+                Puan(10), 
+                Bago Aplaya(11);
 			
 			    private final int km;
-			    RBARoute(int km) { this.km = km; }
+			    R2BRoute(int km) { this.km = km; }
 			    public int getKm() { return km; }
 			}
 	
