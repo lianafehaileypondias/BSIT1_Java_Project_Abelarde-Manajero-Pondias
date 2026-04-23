@@ -69,6 +69,15 @@ import java.util.regex.*;
 		   	r2bStops.add("Puan");
 		   	r2bStops.add("Bago Aplaya");
 
+		ArrayList<String> chosenRoute;
+       	if (route == 1) 
+       	{
+    		chosenRoute = b2r;
+		} 
+		else 
+		{
+    		chosenRoute = r2b;
+		}
 		
 		return route;
 	}
