@@ -45,7 +45,7 @@ import java.util.regex.*;
 
 		ArrayList<String> b2r = new ArrayList<>();
 	        b2rStops.add("Bago Aplaya"); 
-		    b2rStops.add("Puan Crossing");
+		    b2rStops.add("Puan");
 		    b2rStops.add("Ulas");
 		    b2rStops.add("DXSS (Bangkal)"); 
 		    b2rStops.add("Tahimik Avenue"); 
@@ -66,7 +66,7 @@ import java.util.regex.*;
 		   	r2bStops.add("Tahimik Avenue");
 		   	r2bStops.add("DXSS (Bangkal)");
 		   	r2bStops.add("Ulas");
-		   	r2bStops.add("Puan Crossing");
+		   	r2bStops.add("Puan");
 		   	r2bStops.add("Bago Aplaya");
 
 		
