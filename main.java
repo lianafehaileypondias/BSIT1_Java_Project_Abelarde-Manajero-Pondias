@@ -19,6 +19,7 @@ import java.util.regex.*;
 	{
 		System.out.print("Route (1. Bago-Roxas | 2. Roxas-Bago): ");
 		String route = scan.nextInt();
+		scan.nextLine();
 		return route;
 	}
 
