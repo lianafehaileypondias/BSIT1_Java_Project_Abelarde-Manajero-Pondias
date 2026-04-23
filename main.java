@@ -52,11 +52,12 @@ import java.util.regex.*;
     // 1.1 ASK ROUTE
     static ArrayList<String> askRoute(Scanner scan)
     {
-		// 
+		// Asks for the route to take //
         System.out.print("Route (1. Bago-Roxas | 2. Roxas-Bago): ");
         int routeChoice = scan.nextInt();
         scan.nextLine();
 
+		// List of locations under the Bago-Roxas Route //
         ArrayList<String> b2rStops = new ArrayList<>();
         b2rStops.add("Bago Aplaya"); 
         b2rStops.add("Puan");
@@ -70,6 +71,7 @@ import java.util.regex.*;
         b2rStops.add("Almendras Gym");
         b2rStops.add("Roxas Avenue");
 
+		// List of locations under the Roxas-Bago Route //
         ArrayList<String> r2bStops = new ArrayList<>();
         r2bStops.add("Roxas Avenue");
         r2bStops.add("Almendras Gym");
