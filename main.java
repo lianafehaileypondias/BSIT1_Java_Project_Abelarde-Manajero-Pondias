@@ -30,6 +30,11 @@ import java.util.regex.*;
 	        System.out.println("Fare: Php " + fare);
 		}
 
+	static void userLogin()
+	{
+		
+	}		
+		
     // 1.1 ASK ROUTE
     static ArrayList<String> askRoute(Scanner scan)
     {
