@@ -7,7 +7,7 @@ import java.util.regex.*;
 		public static void main(String[] args) {
 	    Scanner scan = new Scanner(System.in);
 
-		String route = askRoute(scan);
+		int route = askRoute(scan);
 		
 	    String currLoc = askCurrLoc(scan);
 	    String destinationLoc = askDesLoc(scan);
