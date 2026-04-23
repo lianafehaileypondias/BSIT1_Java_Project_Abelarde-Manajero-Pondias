@@ -1,39 +1,42 @@
 import java.util.*;
 import java.util.regex.*;
 
-// Enum for BA-R route 
-enum B2RRoute {
-    DXSS(4), TAHIMIK(5), MATINA(6), ABSCBN(7),
-    SM(9), ECOLAND(9), ALMENDRAS(10), ROXAS(11);
-
-    private final int km;
-    BARRoute(int km) { this.km = km; }
-    public int getKm() { return km; }
-}
-
-// Enum for R-BA route 
-enum R2BRoute {
-    TULIP(4), LASUERTE(5), MATINA(6), TAHIMIK(7),
-    DXSS(8), ULAS(9), PUAN(10), BAGO(11);
-
-    private final int km;
-    RBARoute(int km) { this.km = km; }
-    public int getKm() { return km; }
-}
 	public class FinalProject
 	{
 		// MAIN //
-		public static void main(String[] args) {
-	    Scanner scan = new Scanner(System.in);
-
-		int route = askRoute(scan);
-		
-	    String currLoc = askCurrLoc(scan);
-	    String destinationLoc = askDesLoc(scan);
+		public static void main(String[] args) 
+		{
+		    Scanner scan = new Scanner(System.in);
+			// Enum for BA-R route // PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM
+			enum B2RRoute 
+			{
+			    DXSS(4), TAHIMIK(5), MATINA(6), ABSCBN(7),
+			    SM(9), ECOLAND(9), ALMENDRAS(10), ROXAS(11);
+			
+			    private final int km;
+			    BARRoute(int km) { this.km = km; }
+			    public int getKm() { return km; }
+			}
+			
+			// Enum for R-BA route 
+			enum R2BRoute 
+			{
+			    TULIP(4), LASUERTE(5), MATINA(6), TAHIMIK(7),
+			    DXSS(8), ULAS(9), PUAN(10), BAGO(11);
+			
+			    private final int km;
+			    RBARoute(int km) { this.km = km; }
+			    public int getKm() { return km; }
+			}
+	
+			int route = askRoute(scan);
+			
+		    String currLoc = askCurrLoc(scan);
+		    String destinationLoc = askDesLoc(scan);
 	    
-	}
+		}
 
-	// 1.1 ASK ROUTE //
+	// 1.1 ASK ROUTE // // PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM
 	static int askRoute(Scanner scan)
 	{
 		System.out.print("Route (1. Bago-Roxas | 2. Roxas-Bago): ");
