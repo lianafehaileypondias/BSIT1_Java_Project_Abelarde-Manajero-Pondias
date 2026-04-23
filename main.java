@@ -57,14 +57,17 @@ import java.util.regex.*;
 		    b2rStops.add("Roxas Avenue");
 
         ArrayList<String> r2b = new ArrayList<>();
-	        r2b.add("Tulip");
-	        r2b.add("LaSuerte");
-	        r2b.add("Matina");
-	        r2b.add("Tahimik");
-	        r2b.add("Bangkal");
-	        r2b.add("Ulas");
-	        r2b.add("Puan");
-	        r2b.add("Bago");
+	        r2bStops.add("Roxas Avenue");
+			r2bStops.add("Almendras Gym");
+			r2bStops.add("Ecoland Terminal Crossing");
+		   	r2bStops.add("Tulip Drive");
+		   	r2bStops.add("La Suerte Gallera");
+		   	r2bStops.add("Matina Crossing"); 
+		   	r2bStops.add("Tahimik Avenue");
+		   	r2bStops.add("DXSS (Bangkal)");
+		   	r2bStops.add("Ulas");
+		   	r2bStops.add("Puan Crossing");
+		   	r2bStops.add("Bago Aplaya");
 
 		
 		return route;
@@ -87,35 +90,5 @@ import java.util.regex.*;
 	}
 
 
-	static String determineRoute(String currLoc, String destinationLoc)
-	{
-		ArrayList<String> brStops = new ArrayList<>();
-		    b2rStops.add("Bago Aplaya"); 
-		    b2rStops.add("Puan Crossing");
-		    b2rStops.add("Ulas");
-		    b2rStops.add("DXSS (Bangkal)"); 
-		    b2rStops.add("Tahimik Avenue"); 
-		    b2rStops.add("Matina Crossing");
-		    b2rStops.add("ABS-CBN Junction");
-		    b2rStops.add("SM City Davao"); 
-		    b2rStops.add("Ecoland Terminal Crossing");
-		    b2rStops.add("Almendras Gym");
-		    b2rStops.add("Roxas Avenue");
-
-		ArrayList<String> rbStops = new ArrayList<>();
-		   	r2bStops.add("Roxas Avenue");
-			r2bStops.add("Almendras Gym");
-			r2bStops.add("Ecoland Terminal Crossing");
-		   	r2bStops.add("Tulip Drive");
-		   	r2bStops.add("La Suerte Gallera");
-		   	r2bStops.add("Matina Crossing"); 
-		   	r2bStops.add("Tahimik Avenue");
-		   	r2bStops.add("DXSS (Bangkal)");
-		   	r2bStops.add("Ulas");
-		   	r2bStops.add("Puan Crossing");
-		   	r2bStops.add("Bago Aplaya");
-
-			
-	}
 
 }
