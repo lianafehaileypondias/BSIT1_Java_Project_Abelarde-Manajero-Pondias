@@ -90,10 +90,10 @@ import java.util.regex.*;
 		{
     		chosenRoute = r2b;
 		}
-
+		
 		if (chosenRoute.contains(currLoc) && chosenRoute.contains(desLoc)) 
 		{
-            route = "Valid route: " + currLoc + " → " + desLoc;
+            route = currLoc + " → " + desLoc;
         } 
 		else 
 		{
