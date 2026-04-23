@@ -10,8 +10,6 @@ import java.util.regex.*;
 
 		    // LOG IN //
 			userLogin(scan);
-
-			
 			
 			ArrayList<String> route = askRoute(scan);
 
@@ -179,6 +177,7 @@ import java.util.regex.*;
 
     if (route.get(0).equals("Bago Aplaya")) 
     { 
+		// Bago-Roxas
     	distMap.put("Bago Aplaya", 0.0);
         distMap.put("Tahimik Avenue", 0.9722222222);
         distMap.put("Matina Crossing", 1.944444444);
@@ -189,7 +188,8 @@ import java.util.regex.*;
         distMap.put("Roxas Avenue", 6.944444444);
     } 
     else 
-    { // Roxas-Bago
+    { 
+		// Roxas-Bago
     	distMap.put("Roxas Avenue", 0.0);
         distMap.put("La Suerte Gallera", 0.9722222222);
         distMap.put("Matina Crossing", 1.944444444);
@@ -203,11 +203,11 @@ import java.util.regex.*;
     Double currDist = distMap.get(currLoc);
     Double desDist = distMap.get(desLoc);
 
-    if (currDist != null && desDist != null) {
+    if (currDist != null && desDist != null) 
+	{
         return desDist - currDist;
     }
 
-    // fallback if no mapping found
     return stopDistance;
 }
 
@@ -254,6 +254,7 @@ import java.util.regex.*;
 		discAmount = baseFare - (baseFare * discRate);
 		fare = discAmount;
 
+		// round off to the nearest 25 centavos
 		fare = Math.round(fare * 4) / 4.0;
 
 		return fare;
