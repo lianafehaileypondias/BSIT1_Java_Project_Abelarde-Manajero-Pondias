@@ -84,23 +84,23 @@ import java.util.regex.*;
 		ArrayList<String> chosenRoute;
        	if (route == 1) 
        	{
-    		chosenRoute = b2r;
+    		chosenRoute = b2rStops;
 		} 
 		else 
 		{
-    		chosenRoute = r2b;
+    		chosenRoute = r2bStops;
 		}
 		
 		if (chosenRoute.contains(currLoc) && chosenRoute.contains(desLoc)) 
 		{
-            route = currLoc + " → " + desLoc;
+            locations = currLoc + " → " + desLoc;
         } 
 		else 
 		{
-           route = "Invalid";
+           locations = "Invalid";
         }
 		
-		return route;
+		return locations;
 	}
 
 	// 1.2 ASK CURRENT LOCATION //
