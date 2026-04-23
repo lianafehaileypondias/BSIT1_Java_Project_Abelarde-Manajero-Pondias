@@ -9,7 +9,7 @@ import java.util.regex.*;
 		    Scanner scan = new Scanner(System.in);
 
 		    // LOG IN //
-			userLogin();
+			userLogin(scan);
 
 			
 			
@@ -23,17 +23,69 @@ import java.util.regex.*;
 	
 	        printLocs(route, currLoc, desLoc);
 	        
-	        int distance = computeDistance(route, currLoc, desLoc);
+	        double distance = computeDistance(route, currLoc, desLoc);
 	        System.out.println("Distance: " + distance);
 
 	        double fare = computeFare(distance, scan);
 	        System.out.println("Fare: Php " + fare);
 		}
 
-	static void userLogin()
-	{
-		
-	}		
+	static void userLogin(Scanner scan)
+    {
+        boolean validEmail;
+
+            do
+            {
+                System.out.print("Enter E-mail: ");
+                String email = scan.nextLine();
+                validEmail = validateEmail(email);
+                if (validEmail) // checks if email is valid to proceed to signing up user pin
+                {
+                    System.out.println("Valid Email. Proceed...");
+                    System.out.println();
+                }
+
+                if (!validEmail)
+                {
+                    System.out.println("Invalid. Try again..."); // asks for another email input if the previous is invalid
+                    System.out.println();
+                }
+            }
+            while (!validEmail);
+
+            validatePin(scan); // checks if pin is valid to proceed to next user
+    }
+
+    // FUNCTION - Validating Email based on given pattern
+    static boolean validateEmail(String email)
+    {
+        String pattern = "^[\\w.-]+@[\\w.-]+\\.com$"; // pattern = "user@example.com"
+
+        return email.matches(pattern);
+    }
+
+    // FUNCTION - Validating Pin based on given pattern
+    static void validatePin(Scanner scan)
+    {
+        boolean isValidPin;
+        do
+        {
+            System.out.print("Enter Pin (4-digit pin): ");
+            String userPin = scan.nextLine();
+            String pinPattern = "^\\d{4}$"; // pattern requires exactly 4 digits
+
+            isValidPin = userPin.matches(pinPattern);
+
+            if (!isValidPin)
+            {
+                System.out.println("Invalid Pin. Try again...");
+            }
+        }
+        while (!isValidPin);
+
+        System.out.println("Pin accepted. Signing in...");
+        System.out.println();
+    }		
 		
     // 1.1 ASK ROUTE
     static ArrayList<String> askRoute(Scanner scan)
@@ -104,7 +156,8 @@ import java.util.regex.*;
         }
     }
 
-    static int computeDistance(ArrayList<String> route, String currLoc, String desLoc) {
+    static double computeDistance(ArrayList<String> route, String currLoc, String desLoc) 
+{
     int currIndex = route.indexOf(currLoc);
     int desIndex = route.indexOf(desLoc);
 
@@ -113,10 +166,52 @@ import java.util.regex.*;
         return -1;
     }
 
-    return desIndex - currIndex; // distance in stops
-	}
+    int stopDistance = desIndex - currIndex;
 
-	static double computeFare(int distance, Scanner scan)
+    // If distance is <= 4 stops, keep old logic
+    if (stopDistance <= 4) 
+    {
+        return stopDistance;
+    }
+
+    // Otherwise, use mapped distances
+    HashMap<String, Double> distMap = new HashMap<>();
+
+    if (route.get(0).equals("Bago Aplaya")) 
+    { 
+    	distMap.put("Bago Aplaya", 0.0);
+        distMap.put("Tahimik Avenue", 0.9722222222);
+        distMap.put("Matina Crossing", 1.944444444);
+        distMap.put("ABSCBN", 3.055555556);
+        distMap.put("SM City Davao", 4.027777778);
+        distMap.put("Ecoland Terminal Crossing", 5.0);
+        distMap.put("Almendras Gym", 5.972222222);
+        distMap.put("Roxas Avenue", 6.944444444);
+    } 
+    else 
+    { // Roxas-Bago
+    	distMap.put("Roxas Avenue", 0.0);
+        distMap.put("La Suerte Gallera", 0.9722222222);
+        distMap.put("Matina Crossing", 1.944444444);
+        distMap.put("Tahimik Avenue", 3.055555556);
+        distMap.put("Bangkal", 4.027777778);
+        distMap.put("Ulas", 5.0);
+        distMap.put("Puan", 5.972222222);
+        distMap.put("Bago Aplaya", 6.944444444);
+    }
+
+    Double currDist = distMap.get(currLoc);
+    Double desDist = distMap.get(desLoc);
+
+    if (currDist != null && desDist != null) {
+        return desDist - currDist;
+    }
+
+    // fallback if no mapping found
+    return stopDistance;
+}
+
+	static double computeFare(double distance, Scanner scan)
 	{
 	 	double regFare = 12.00;
 	 	double baseFare = 0; 
@@ -130,7 +225,7 @@ import java.util.regex.*;
 		}
 		else if (distance > 4)
 		{
-			baseFare = regFare + (1.80 * (distance - 4));
+			baseFare = regFare + (1.80 * distance);
 		}
 
 		// Computation of Discount: type of passenger
@@ -143,13 +238,13 @@ import java.util.regex.*;
 				discRate = 0.00;
 				break;
 			case "St":
-				discRate = 20.00;
+				discRate = 0.20;
 				break;
 			case "Sr":
-				discRate = 20.00;
+				discRate = 0.20;
 				break;
 			case "PWD":
-				discRate = 20.00;
+				discRate = 0.20;
 				break;
 			default:
 				System.out.println("Invalid Choice."); 
@@ -158,6 +253,8 @@ import java.util.regex.*;
 
 		discAmount = baseFare - (baseFare * discRate);
 		fare = discAmount;
+
+		fare = Math.round(fare * 4) / 4.0;
 
 		return fare;
 	}
