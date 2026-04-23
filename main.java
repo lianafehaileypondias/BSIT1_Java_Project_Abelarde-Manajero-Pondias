@@ -8,38 +8,38 @@ import java.util.regex.*;
 		{
 		    Scanner scan = new Scanner(System.in);
 				// Enum for BA-R route //
-			enum B2RRoute 
-			{
-			    DXSS (Bangkal)(4), 
-                Tahimik Avenue(5), 
-                Matina Crossing(6), 
-                ABS-CBN Junction(7),
-                SM City Davao(9), 
-                Ecoland Terminal Crossing(9), 
-                Almendras Gym(10), 
-                Roxas Avenue(11);
+			// enum B2RRoute 
+			// {
+			//     DXSS (Bangkal)(4), 
+            //     Tahimik Avenue(5), 
+            //     Matina Crossing(6), 
+            //     ABS-CBN Junction(7),
+            //     SM City Davao(9), 
+            //     Ecoland Terminal Crossing(9), 
+            //     Almendras Gym(10), 
+            //     Roxas Avenue(11);
                 
-			    private final int km;
-			    B2RRoute(int km) { this.km = km; }
-			    public int getKm() { return km; }
-			}
+			//     private final int km;
+			//     B2RRoute(int km) { this.km = km; }
+			//     public int getKm() { return km; }
+			// }
 			
-			// Enum for R-BA route 
-			enum R2BRoute 
-			{
-                Tulip Drive(4), 
-                La Suerte Gallera(5), 
-                Matina Crossing(6), 
-                Tahimik Avenue(7),
-                DXSS (Bangkal)(8), 
-                Ulas(9), 
-                Puan(10), 
-                Bago Aplaya(11);
+			// // Enum for R-BA route 
+			// enum R2BRoute 
+			// {
+            //     Tulip Drive(4), 
+            //     La Suerte Gallera(5), 
+            //     Matina Crossing(6), 
+            //     Tahimik Avenue(7),
+            //     DXSS (Bangkal)(8), 
+            //     Ulas(9), 
+            //     Puan(10), 
+            //     Bago Aplaya(11);
 			
-			    private final int km;
-			    R2BRoute(int km) { this.km = km; }
-			    public int getKm() { return km; }
-			}
+			//     private final int km;
+			//     R2BRoute(int km) { this.km = km; }
+			//     public int getKm() { return km; }
+			// }
 			
 			ArrayList<String> route = askRoute(scan);
 
@@ -65,10 +65,10 @@ import java.util.regex.*;
         b2rStops.add("Bago Aplaya"); 
         b2rStops.add("Puan");
         b2rStops.add("Ulas");
-        b2rStops.add("DXSS (Bangkal)"); 
+        b2rStops.add("Bangkal"); 
         b2rStops.add("Tahimik Avenue"); 
         b2rStops.add("Matina Crossing");
-        b2rStops.add("ABS-CBN Junction");
+        b2rStops.add("ABSCBN");
         b2rStops.add("SM City Davao"); 
         b2rStops.add("Ecoland Terminal Crossing");
         b2rStops.add("Almendras Gym");
@@ -83,7 +83,7 @@ import java.util.regex.*;
         r2bStops.add("La Suerte Gallera");
         r2bStops.add("Matina Crossing"); 
         r2bStops.add("Tahimik Avenue");
-        r2bStops.add("DXSS (Bangkal)");
+        r2bStops.add("Bangkal");
         r2bStops.add("Ulas");
         r2bStops.add("Puan");
         r2bStops.add("Bago Aplaya");
@@ -101,6 +101,26 @@ import java.util.regex.*;
 	// 1.2 PRINT LOCATIONS //
     static void printLocs(ArrayList<String> route, String currLoc, String desLoc)
     {
-    	 System.out.println("Your ride: " + currLoc + " - " + desLoc);
+    	int currIndex = route.indexOf(currLoc);
+		int desIndex = route.indexOf(desLoc);
+
+    	if (route.contains(currLoc) && route.contains(desLoc)) 
+    	{
+    		if (currIndex < 0 || desIndex < 0 |currIndex > desIndex)
+        	{
+        		System.out.println("Invalid");
+        	}
+        	else
+        	{
+        		System.out.println("Your ride: " + currLoc + " - " + desLoc);
+        	}
+        }
+        else 
+        {
+            System.out.println("Invalid");
+        }
+
+		
+
     }
 }
