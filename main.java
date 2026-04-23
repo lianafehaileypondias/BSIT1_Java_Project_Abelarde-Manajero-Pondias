@@ -42,6 +42,28 @@ import java.util.regex.*;
 		System.out.print("Route (1. Bago-Roxas | 2. Roxas-Bago): ");
 		String route = scan.nextInt();
 		scan.nextLine();
+
+		ArrayList<String> b2r = new ArrayList<>();
+        b2r.add("Bangkal");
+        b2r.add("Tahimik");
+        b2r.add("Matina");
+        b2r.add("ABS");
+        b2r.add("SM");
+        b2r.add("Terminal");
+        b2r.add("Almendras");
+        b2r.add("Roxas");
+
+        ArrayList<String> r2b = new ArrayList<>();
+        r2b.add("Tulip");
+        r2b.add("LaSuerte");
+        r2b.add("Matina");
+        r2b.add("Tahimik");
+        r2b.add("Bangkal");
+        r2b.add("Ulas");
+        r2b.add("Puan");
+        r2b.add("Bago");
+
+		
 		return route;
 	}
 
