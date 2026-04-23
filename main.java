@@ -29,7 +29,7 @@ import java.util.regex.*;
 			    public int getKm() { return km; }
 			}
 	
-			int route = askRoute(scan);
+			String route = askRoute(scan);
 			
 		    String currLoc = askCurrLoc(scan);
 		    String destinationLoc = askDesLoc(scan);
@@ -37,7 +37,7 @@ import java.util.regex.*;
 		}
 
 	// 1.1 ASK ROUTE //
-	static int askRoute(Scanner scan)
+	static String askRoute(Scanner scan)
 	{
 		System.out.print("Route (1. Bago-Roxas | 2. Roxas-Bago): ");
 		String route = scan.nextInt();
@@ -78,6 +78,15 @@ import java.util.regex.*;
 		{
     		chosenRoute = r2b;
 		}
+
+		if (chosenRoute.contains(currLoc) && chosenRoute.contains(desLoc)) 
+		{
+            route = "Valid route: " + currLoc + " → " + desLoc;
+        } 
+		else 
+		{
+           route = "Invalid";
+        }
 		
 		return route;
 	}
