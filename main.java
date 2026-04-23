@@ -55,7 +55,7 @@ import java.util.regex.*;
 		String route = scan.nextInt();
 		scan.nextLine();
 
-		ArrayList<String> b2r = new ArrayList<>();
+		ArrayList<String> b2rStops = new ArrayList<>();
 	        b2rStops.add("Bago Aplaya"); 
 		    b2rStops.add("Puan");
 		    b2rStops.add("Ulas");
@@ -68,7 +68,7 @@ import java.util.regex.*;
 		    b2rStops.add("Almendras Gym");
 		    b2rStops.add("Roxas Avenue");
 
-        ArrayList<String> r2b = new ArrayList<>();
+        ArrayList<String> r2bStops = new ArrayList<>();
 	        r2bStops.add("Roxas Avenue");
 			r2bStops.add("Almendras Gym");
 			r2bStops.add("Ecoland Terminal Crossing");
