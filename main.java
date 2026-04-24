@@ -57,7 +57,7 @@ import java.util.regex.*;
     // FUNCTION - Validating Email based on given pattern
     static boolean validateEmail(String email)
     {
-        String pattern = "^[\\w.-]+@[\\w.-]+\\.com$"; // pattern = "user@example.com"
+        String pattern = "^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$"; // pattern = "user@example.com"
 
         return email.matches(pattern);
     }
