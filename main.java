@@ -86,6 +86,8 @@ import java.text.DecimalFormat;
 	       
 	        boolean proceed = true;
 			
+			printRouteMap();
+
 	        do
 	        {
 	        	ArrayList<String> route = askRoute(scan);
@@ -120,56 +122,51 @@ import java.text.DecimalFormat;
 		        }
 	        } while (proceed);
 	    }
- 
-//PRINT ROUTE MAP
-    static void printRouteMap() {
-        String[][] routeMap = new String[12][2];
 
-        // B2R
-        routeMap[0][0] = "BAGO APLAYA → ROXAS AVENUE ROUTE";
-        routeMap[1][0] = "Bago Aplaya";
-        routeMap[2][0] = "Puan";
-        routeMap[3][0] = "Ulas";
-        routeMap[4][0] = "Bangkal";
-        routeMap[5][0] = "Tahimik Avenue";
-        routeMap[6][0] = "Matina Crossing";
-        routeMap[7][0] = "ABSCBN";
-        routeMap[8][0] = "SM City Davao";
-        routeMap[9][0] = "Ecoland Terminal Crossing";
-        routeMap[10][0] = "Almendras Gym";
-        routeMap[11][0] = "Roxas Avenue";
+	    //PRINT ROUTE MAP
+	    static void printRouteMap() {
+	        String[][] routeMap = new String[12][2];
 
-        // R2B
-        routeMap[0][1] = "ROXAS AVENUE → BAGO APLAYA ROUTE";
-        routeMap[1][1] = "Roxas Avenue";
-        routeMap[2][1] = "Almendras Gym";
-        routeMap[3][1] = "Ecoland Terminal Crossing";
-        routeMap[4][1] = "Tulip Drive";
-        routeMap[5][1] = "La Suerte Gallera";
-        routeMap[6][1] = "Matina Crossing";
-        routeMap[7][1] = "Tahimik Avenue";
-        routeMap[8][1] = "Bangkal";
-        routeMap[9][1] = "Ulas";
-        routeMap[10][1] = "Puan";
-        routeMap[11][1] = "Bago";
+	        // B2R
+	        routeMap[0][0] = "BAGO APLAYA -> ROXAS AVENUE ROUTE";
+	        routeMap[1][0] = "Bago Aplaya";
+	        routeMap[2][0] = "Puan";
+	        routeMap[3][0] = "Ulas";
+	        routeMap[4][0] = "Bangkal";
+	        routeMap[5][0] = "Tahimik Avenue";
+	        routeMap[6][0] = "Matina Crossing";
+	        routeMap[7][0] = "ABSCBN";
+	        routeMap[8][0] = "SM City Davao";
+	        routeMap[9][0] = "Ecoland Terminal Crossing";
+	        routeMap[10][0] = "Almendras Gym";
+	        routeMap[11][0] = "Roxas Avenue";
 
-        // Column widths
-        int colWidth = 35;
+	        // R2B
+	        routeMap[0][1] = "ROXAS AVENUE -> BAGO APLAYA ROUTE";
+	        routeMap[1][1] = "Roxas Avenue";
+	        routeMap[2][1] = "Almendras Gym";
+	        routeMap[3][1] = "Ecoland Terminal Crossing";
+	        routeMap[4][1] = "Tulip Drive";
+	        routeMap[5][1] = "La Suerte Gallera";
+	        routeMap[6][1] = "Matina Crossing";
+	        routeMap[7][1] = "Tahimik Avenue";
+	        routeMap[8][1] = "Bangkal";
+	        routeMap[9][1] = "Ulas";
+	        routeMap[10][1] = "Puan";
+	        routeMap[11][1] = "Bago";
 
-        System.out.println("+" + "-".repeat(colWidth) + "+" + "-".repeat(colWidth) + "+");
+	        // Column widths
+	        int colWidth = 35;
 
-        // Print each row with borders
-        for (int i = 0; i < routeMap.length; i++) {
-            System.out.printf("|%-35s|%-35s|%n", routeMap[i][0], routeMap[i][1]);
-            System.out.println("+" + "-".repeat(colWidth) + "+" + "-".repeat(colWidth) + "+");
-        }
-    }
+	        System.out.println("+" + "-".repeat(colWidth) + "+" + "-".repeat(colWidth) + "+");
 
-    public static void main(String[] args) {
-        printRouteMap();
-    }
-}
-
+	        // Print each row with borders
+	        for (int i = 0; i < routeMap.length; i++) {
+	            System.out.printf("|%-35s|%-35s|%n", routeMap[i][0], routeMap[i][1]);
+	            System.out.println("+" + "-".repeat(colWidth) + "+" + "-".repeat(colWidth) + "+");
+	        }
+	    }
+    
 	    // 1.1 ASK ROUTE
 	    static ArrayList<String> askRoute(Scanner scan)
 	    {
@@ -322,7 +319,9 @@ import java.text.DecimalFormat;
 			}
 
 			// Computation of Discount: type of passenger
-			System.out.print("Regular (R) / Student (St) / Senior (Sr) / PWD Passenger (PWD): ");
+			System.out.println("========== PASSENGER TYPE ==========");
+			System.out.println("Regular (R)\n" + "Student (St)\n" + "Senior (Sr) \n" + "PWD Passenger (PWD)\n");
+			System.out.print("Enter choice: ");
 			String passType = scan.nextLine();
 
 			switch (passType)
