@@ -349,20 +349,20 @@ import java.text.DecimalFormat;
             System.out.println("========== PASSENGER TYPE ==========");
             System.out.println("Regular (R)\n" + "Student (St)\n" + "Senior (Sr) \n" + "PWD Passenger (PWD)\n");
             System.out.print("Enter choice: ");
-            String passType = scan.nextLine();
+            String passType = scan.nextLine().toLowerCase();
 
             switch (passType)
             {
-                case "R":
+                case "r":
                     discRate = 0.00;
                     break;
-                case "St":
+                case "st":
                     discRate = 0.20;
                     break;
-                case "Sr":
+                case "sr":
                     discRate = 0.20;
                     break;
-                case "PWD":
+                case "pwd":
                     discRate = 0.20;
                     break;
                 default:
