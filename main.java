@@ -2,16 +2,18 @@ import java.util.*;
 import java.util.regex.*;
 import java.text.DecimalFormat;
 
-    public class main 
+    public class project 
     {
         public static void main(String[] args) 
         {
             Scanner scan = new Scanner(System.in);
 
-            System.out.println("===== LOGIN =====");
+            System.out.println();
+            System.out.println("======== LOGIN =======");
             System.out.println("1. Access with account");
             System.out.println("2. Access as guest");
-            System.out.print("Enter choice: ");
+            System.out.println();
+            System.out.print("\tEnter choice: ");
             int choice = scan.nextInt();
             scan.nextLine();
             if (choice == 1)
@@ -31,7 +33,8 @@ import java.text.DecimalFormat;
             boolean validEmail;
             do
             {
-                System.out.print("Enter E-mail: ");
+                System.out.println();
+                System.out.print("\tEnter E-mail: ");
                 String email = scan.nextLine();
                 validEmail = validateEmail(email);
                 if (validEmail) // checks if email is valid to proceed to signing up user pin
@@ -63,7 +66,7 @@ import java.text.DecimalFormat;
             boolean isValidPin;
             do
             {
-                System.out.print("Enter Pin (4-digit pin): ");
+                System.out.print("\tEnter Pin (4-digit pin): ");
                 String userPin = scan.nextLine();
                 String pinPattern = "^\\d{4}$"; // pattern requires exactly 4 digits
 
@@ -91,9 +94,9 @@ import java.text.DecimalFormat;
             do
             {
                 ArrayList<String> route = askRoute(scan);
-                System.out.print("Current Location: ");
+                System.out.print("\tCurrent Location: ");
                 String currLoc = scan.nextLine();
-                System.out.print("Destination: ");
+                System.out.print("\tDestination: ");
                 String desLoc = scan.nextLine();
 
                 String validOrInvalid = validateLocs(route, currLoc, desLoc);
@@ -106,16 +109,19 @@ import java.text.DecimalFormat;
                     System.out.println("Distance: " + df.format(distance) + " km");
 
                     double fare = computeFare(distance, scan);
-                    System.out.println("Fare: Php " + df.format(fare)); 
+                    System.out.println(" ________________________");
+                    System.out.print("| Fare: Php " + df.format(fare) );
+                    System.out.println("\t|");
+                    System.out.println("|________________________|"); 
 
                     System.out.println();
-                    System.out.print("Would you like to proceed? (Yes/No): ");
+                    System.out.print("\tWould you like to proceed? (Yes/No): ");
                     String proceedChoice = scan.nextLine();
                     proceed = proceedChoice.equalsIgnoreCase("Yes");
                 }
                 else 
                 {
-                    System.out.print("Try again? (Yes/No): ");
+                    System.out.print("\tTry again? (Yes/No): ");
                     String retry = scan.nextLine();
                     proceed = retry.equalsIgnoreCase("Yes");
                     continue;
@@ -158,6 +164,7 @@ import java.text.DecimalFormat;
             // Column widths
             int colWidth = 35;
 
+            System.out.println();
             System.out.println("+" + "-".repeat(colWidth) + "+" + "-".repeat(colWidth) + "+");
 
             // Print each row with borders
@@ -171,10 +178,12 @@ import java.text.DecimalFormat;
         static ArrayList<String> askRoute(Scanner scan)
         {
             // Asks for the route to take //
-            System.out.println("========== CHOOSE ROUTE ==========");
+            System.out.println();
+            System.out.println("============ CHOOSE ROUTE ============");
             System.out.println("1. Bago Aplaya ---> Roxas Avenue Route");
             System.out.println("2. Roxas Avenue ---> Bago Aplaya Route");
-            System.out.print("Enter chosen route: ");
+            System.out.println();
+            System.out.print("\tEnter chosen route: ");
             int routeChoice = scan.nextInt();
             scan.nextLine();
 
@@ -251,17 +260,20 @@ import java.text.DecimalFormat;
             {
                 if (currIndex < 0 || desIndex < 0 || currIndex > desIndex)
                 {
+                    System.out.println();
                     System.out.println("Invalid. Recheck your locations...");
                     validOrInvalid = "Invalid";
                 }
                 else
                 {
+                    System.out.println();
                     System.out.println("Your ride: " + currName + " -> " + desName);
                     validOrInvalid = "Valid";
                 }
             }
             else 
             {
+                System.out.println();
                 System.out.println("Invalid locations. Consider taking the other route...");
                 validOrInvalid = "Invalid";
             }
@@ -346,9 +358,10 @@ import java.text.DecimalFormat;
             }
 
             // Computation of Discount: type of passenger
-            System.out.println("========== PASSENGER TYPE ==========");
-            System.out.println("Regular (R)\n" + "Student (St)\n" + "Senior (Sr) \n" + "PWD Passenger (PWD)\n");
-            System.out.print("Enter choice: ");
+            System.out.println();
+            System.out.println("===== PASSENGER TYPE =====");
+            System.out.println("- Regular (R)\n" + "- Student (St)\n" + "- Senior (Sr) \n" + "- PWD Passenger (PWD)\n");
+            System.out.print("\tEnter choice: ");
             String passType = scan.nextLine().toLowerCase();
 
             switch (passType)
@@ -370,7 +383,7 @@ import java.text.DecimalFormat;
                     break;
             }
 
-            discAmount = baseFare - (baseFare * discRate);
+            discAmount = baseFare - (baseFare * discRate);  
             fare = discAmount;
 
             // round off to the nearest 25 centavos
