@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.regex.*;
 import java.text.DecimalFormat;
 
-    public class piste 
+    public class project 
     {
         public static void main(String[] args) 
         {
