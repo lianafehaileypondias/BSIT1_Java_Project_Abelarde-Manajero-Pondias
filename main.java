@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.regex.*;
 import java.text.DecimalFormat;
 
-    public class project 
+    public class main 
     {
         public static void main(String[] args) 
         {
@@ -103,7 +103,7 @@ import java.text.DecimalFormat;
                 if (validOrInvalid.equals("Valid"))
                 {  
                     double distance = computeDistance(route, currLoc, desLoc);
-                    System.out.println("Distance: " + df.format(distance));
+                    System.out.println("Distance: " + df.format(distance) + " km");
 
                     double fare = computeFare(distance, scan);
                     System.out.println("Fare: Php " + df.format(fare)); 
