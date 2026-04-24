@@ -86,7 +86,6 @@ import java.text.DecimalFormat;
 	       
 	        boolean proceed = true;
 			
-			
 	        do
 	        {
 	        	ArrayList<String> route = askRoute(scan);
@@ -94,8 +93,11 @@ import java.text.DecimalFormat;
 		        String currLoc = scan.nextLine();
 		        System.out.print("Destination: ");
 		        String desLoc = scan.nextLine();
-		            
-		        String validOrInvalid = printLocs(route, currLoc, desLoc);
+
+		        String validOrInvalid = validateLocs(route, currLoc, desLoc);
+
+
+
 		        if (validOrInvalid.equals("Valid"))
 		        {  
 			        double distance = computeDistance(route, currLoc, desLoc);
@@ -118,68 +120,10 @@ import java.text.DecimalFormat;
 		        }
 	        } while (proceed);
 	    }
-
-		
-	    //R2B
-	    static void printR2BMap() {
-	        String[][] r2bMap = new String[2][6];
-
-	        // Manually assign values
-	        r2bMap[0][0] = "Roxas Avenue";
-	        r2bMap[0][1] = "Almendras Gym";
-	        r2bMap[0][2] = "Ecoland Terminal Crossing";
-	        r2bMap[0][3] = "Tulip Drive";
-	        r2bMap[0][4] = "La Suerte Gallera";
-
-	        r2bMap[1][0] = "Matina Crossing";
-	        r2bMap[1][1] = "Tahimik Avenue";
-	        r2bMap[1][2] = "Bangkal";
-	        r2bMap[1][3] = "Ulas";
-	        r2bMap[1][4] = "Puan";
-	        r2bMap[1][5] = "Bago";
-	        
-	        System.out.println();
-	        System.out.println();
-	        System.out.println("---------------------------------------------------------------------------------------------------------"); 
-	        System.out.println("Roxas-Bago Route Map:");
-	        System.out.println();
-	        System.out.println(r2bMap[0][0] + " -> " + r2bMap[0][1] + " -> " + r2bMap[0][2] + " -> " + r2bMap[0][3] + " -> " + r2bMap[0][4] + " -> ");
-	        System.out.println(r2bMap[1][0] + " -> " + r2bMap[1][1] + " -> " + r2bMap[1][2] + " -> " + r2bMap[1][3] + " -> " + r2bMap[1][4] + " -> " + r2bMap[1][5]);
-	        System.out.println("---------------------------------------------------------------------------------------------------------");
-	    }
-
-	    // B2R
-	    static void printB2RMap() {
-	        String[][] b2rMap = new String[2][6];
-
-	        b2rMap[0][0] = "Bago Aplaya";
-	        b2rMap[0][1] = "Puan";
-	        b2rMap[0][2] = "Ulas";
-	        b2rMap[0][3] = "Bangkal";
-	        b2rMap[0][4] = "Tahimik Avenue";
-
-	        b2rMap[1][0] = "Matina Crossing";
-	        b2rMap[1][1] = "ABSCBN";
-	        b2rMap[1][2] = "SM City Davao";
-	        b2rMap[1][3] = "Ecoland Terminal Crossing";
-	        b2rMap[1][4] = "Almendras Gym";
-	        b2rMap[1][5] = "Roxas Avenue";     
-
-	        System.out.println("---------------------------------------------------------------------------------------------------------");
-	        System.out.println("Bago-Roxas Route Map:");
-	        System.out.println();
-	        System.out.println(b2rMap[0][0] + " -> " + b2rMap[0][1] + " -> " + b2rMap[0][2] + " -> " + b2rMap[0][3] + " -> " + b2rMap[0][4] + " -> ");
-	        System.out.println(b2rMap[1][0] + " -> " + b2rMap[1][1] + " -> " + b2rMap[1][2] + " -> " + b2rMap[1][3] + b2rMap[1][4] + " -> " + b2rMap[1][5]);
-	        System.out.println("---------------------------------------------------------------------------------------------------------"); 
-	    
-	    }
     
 	    // 1.1 ASK ROUTE
 	    static ArrayList<String> askRoute(Scanner scan)
 	    {
-		// Shows routes
-	    // printB2RMap();
-	    // printR2BMap();
 			// Asks for the route to take //
 	    	System.out.println("========== CHOOSE ROUTE ==========");
 	        System.out.println("1. Bago Aplaya ---> Roxas Avenue Route");
@@ -227,7 +171,7 @@ import java.text.DecimalFormat;
 	    }
 
 		// 1.2 PRINT LOCATIONS //
-	    static String printLocs(ArrayList<String> route, String currLoc, String desLoc)
+	    static String validateLocs(ArrayList<String> route, String currLoc, String desLoc)
 	    {
 	    	int currIndex = route.indexOf(currLoc);
 			int desIndex = route.indexOf(desLoc);
