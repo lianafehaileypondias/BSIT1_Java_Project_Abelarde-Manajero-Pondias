@@ -3,7 +3,7 @@ import java.util.regex.*;
 import java.text.DecimalFormat;
 
     // 0.0 CLASS DECLARATION (Lesson: Class)
-    public class finalleh 
+    public class BayadPo 
     {
         public static void main(String[] args) 
         {
