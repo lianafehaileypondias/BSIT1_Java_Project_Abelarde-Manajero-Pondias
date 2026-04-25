@@ -1,7 +1,7 @@
 # BayadPo – Jeepney Fare Calculator and Route Validation System for Jeepney Routes in Davao City.
 
 ## Project Title
-BayadPo is a Java program that serves as a fare calculation and route validation system based on public transportation routes in Davao City. At present, the program covers only the Bago Aplaya–Roxas Avenue route, but it already demonstrates its usefulness by helping commuters estimate fares before traveling, supporting better budgeting, promoting fairness through automated discounts, and encouraging efficient route awareness by showing valid stops.
+BayadPo is a Java program that serves as a fare calculation and route validation system based on public transportation routes in Davao City. At present, the program covers only the Bago Aplaya–Roxas Avenue route and vice versa, but it already demonstrates its usefulness by helping commuters estimate fares before traveling, supporting better budgeting, promoting fairness through automated discounts, and encouraging efficient route awareness by showing valid stops.
 
 ## Purpose and Problem Being Solved
 By reducing confusion and human error in fare computation, BayadPo provides a transparent, accurate, and accessible way to calculate fares, which is especially important today as rising oil prices continue to affect daily transportation costs. The program allows users to log in, choose a route, input their current location and destination, and then compute both the distance and the fare, including applicable discounts for students, seniors, and PWD passengers.
@@ -31,4 +31,4 @@ By reducing confusion and human error in fare computation, BayadPo provides a tr
 - Classes (Object-Oriented Programming) → Used to separate responsibilities (e.g., User, Route, FareCalculator, BayadPo) → Encapsulates logic into distinct modules, improves readability, and supports reusability across the program.
 
 ## Credits:
-Developed by the BSIT1 Java Project team: Abelarde, Manajero, and Pondias.
+Developed by Abelarde, Manajero, and Pondias, 1st Year BS Information Technology students of Ateneo de Davao University.
