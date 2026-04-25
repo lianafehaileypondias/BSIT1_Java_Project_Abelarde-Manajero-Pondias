@@ -3,7 +3,7 @@ import java.util.regex.*;
 import java.text.DecimalFormat;
 
     // 0.0 CLASS DECLARATION (Lesson: Class)
-    public class main
+    public class finalleh 
     {
         public static void main(String[] args) 
         {
@@ -15,14 +15,12 @@ import java.text.DecimalFormat;
             System.out.println("1. Access with account");
             System.out.println("2. Access as guest");
             System.out.println();
-            System.out.print("\tEnter choice: ");
-            int choice = scan.nextInt();
-            scan.nextLine();
+            int choice = 0;
+           
 
             // 1.1 LOGIN CHOICE (Lesson: Do While Loops & If else condition)
             do
             {
-                System.out.println("Invalid. Try again...");
                 System.out.print("\tEnter choice: ");
                 choice = scan.nextInt();
                 scan.nextLine();
@@ -35,6 +33,9 @@ import java.text.DecimalFormat;
                 else if (choice == 2)
                 {
                     runProgram(scan);
+                } else
+                {
+                    System.out.println("Invalid. Try again...");
                 }
                 
             } while (choice != 1 && choice != 2);
@@ -404,28 +405,41 @@ import java.text.DecimalFormat;
             System.out.println();
             System.out.println("===== PASSENGER TYPE =====");
             System.out.println("- Regular (R)\n" + "- Student (St)\n" + "- Senior (Sr) \n" + "- PWD Passenger (PWD)\n");
-            System.out.print("\tEnter choice: ");
-            String passType = scan.nextLine().toLowerCase();
+            String passType;
 
-            // 7.3 DISCOUNT SELECTION (Lesson: Switch)
-            switch (passType)
+            boolean bulValidPassType = false;
+
+            do
             {
-                case "r":
-                    discRate = 0.00;
-                    break;
-                case "st":
-                    discRate = 0.20;
-                    break;
-                case "sr":
-                    discRate = 0.20;
-                    break;
-                case "pwd":
-                    discRate = 0.20;
-                    break;
-                default:
-                    System.out.println("Invalid Choice."); 
-                    break;
-            }
+                System.out.print("\tEnter choice: ");
+                passType = scan.nextLine().toLowerCase();
+
+                // 7.3 DISCOUNT SELECTION (Lesson: Switch)
+                switch (passType)
+                {
+                    case "r":
+                        discRate = 0.00;
+                        bulValidPassType = true;
+                        break;
+                    case "st":
+                        discRate = 0.20;
+                        bulValidPassType = true;
+                        break;
+                    case "sr":
+                        discRate = 0.20;
+                        bulValidPassType = true;
+                        break;
+                    case "pwd":
+                        discRate = 0.20;
+                        bulValidPassType = true;
+                        break;
+                    default:
+                        System.out.println("Invalid Choice."); 
+                        break;
+                }
+
+            } while (!bulValidPassType);
+
 
             // 7.4 FARE CALCULATION
             discAmount = baseFare - (baseFare * discRate);  
