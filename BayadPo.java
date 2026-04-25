@@ -450,4 +450,6 @@ import java.text.DecimalFormat;
 
             return fare;
         }
+
+        // Credits: Developed by Abelarde, Manajero, Pondias
     }
