@@ -24,9 +24,9 @@ By reducing confusion and human error in fare computation, BayadPo provides a tr
 
 ## Mapping of the 5 Lessons Used:
 - Regular Expressions → Used in email and location validation → Ensures accurate and flexible input handling.
-- Loops (Do-while) → Used in the main program loop → Keeps the system interactive until the user exits.
+- Loops (Do-while) → Used in the main program loop and validation of user input → Keeps the system interactive until the user exits and prompts re-entry for invalid input.
 - Conditional Statements & Switch → Used in fare computation and passenger type selection → Provides decision-making logic for discounts and routes.
-- Functions/Methods → Used throughout (e.g., userLogin, askRoute, computeFare) → Organizes code into reusable and modular components.
+- Functions/Methods → Used throughout (e.g., userLogin(), askRoute(), computeDistance()) → Organizes code into reusable and modular components.
 - Arrays & ArrayLists, HashMaps → Used in route storage and distance mapping → Efficiently manages stops and realistic distance calculations.
 - Classes (Object-Oriented Programming) → Used to separate responsibilities (e.g., User, Route, FareCalculator, BayadPo) → Encapsulates logic into distinct modules, improves readability, and supports reusability across the program.
 
