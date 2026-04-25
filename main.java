@@ -3,7 +3,7 @@ import java.util.regex.*;
 import java.text.DecimalFormat;
 
     // 0.0 CLASS DECLARATION (Lesson: Class)
-    public class project 
+    public class main
     {
         public static void main(String[] args) 
         {
@@ -19,16 +19,26 @@ import java.text.DecimalFormat;
             int choice = scan.nextInt();
             scan.nextLine();
 
-            // 1.1 LOGIN CHOICE (Lesson: If)
-            if (choice == 1)
+            // 1.1 LOGIN CHOICE (Lesson: Do While Loops & If else condition)
+            do
             {
-                userLogin(scan);
-                runProgram(scan);
-            }
-            else
-            {
-                runProgram(scan);
-            }
+                System.out.println("Invalid. Try again...");
+                System.out.print("\tEnter choice: ");
+                choice = scan.nextInt();
+                scan.nextLine();
+
+                if (choice == 1)
+                {
+                    userLogin(scan);
+                    runProgram(scan);
+                }
+                else if (choice == 2)
+                {
+                    runProgram(scan);
+                }
+                
+            } while (choice != 1 && choice != 2);
+
         }
 
         // 2.0 USER LOG-IN (Lesson: Function)
@@ -123,13 +133,17 @@ import java.text.DecimalFormat;
 
                     // 3.8 FARE COMPUTATION (Lesson: Function + Switch)
                     double fare = computeFare(distance, scan);
-                    System.out.println(" ________________________");
-                    System.out.print("| Fare: Php " + df.format(fare) );
-                    System.out.println("\t|");
-                    System.out.println("|________________________|"); 
+                    String fareText = "Fare: Php " + df.format(fare);
+                    int width = 25;
+                    int padSize = (width - fareText.length()) / 2;
+                    String padded = " ".repeat(padSize) + fareText + " ".repeat(width - fareText.length() - padSize);
+                    System.out.println();
+                    System.out.println("=============================");
+                    System.out.printf("║ %s ║%n", padded);
+                    System.out.println("============================="); 
+                    System.out.println();
 
                     // 3.9 CONTINUE PROMPT
-                    System.out.println();
                     System.out.print("\tWould you like to proceed? (Yes/No): ");
                     String proceedChoice = scan.nextLine();
                     proceed = proceedChoice.equalsIgnoreCase("Yes");
@@ -194,15 +208,6 @@ import java.text.DecimalFormat;
         // 5.0 ROUTE SELECTION (Lesson: Function + ArrayList)
         static ArrayList<String> askRoute(Scanner scan)
         {
-            System.out.println();
-            System.out.println("============ CHOOSE ROUTE ============");
-            System.out.println("1. Bago Aplaya ---> Roxas Avenue Route");
-            System.out.println("2. Roxas Avenue ---> Bago Aplaya Route");
-            System.out.println();
-            System.out.print("\tEnter chosen route: ");
-            int routeChoice = scan.nextInt();
-            scan.nextLine();
-
             /// 5.1 ROUTE LIST INITIALIZATION (Lesson: ArrayList)
             // List of locations under the Bago-Roxas Route
             ArrayList<String> b2rStops = new ArrayList<>();
@@ -232,14 +237,29 @@ import java.text.DecimalFormat;
             r2bStops.add("Puan");
             r2bStops.add("Bago Aplaya");
 
-            if (routeChoice == 1) // 5.2 ROUTTE CHOICE CONDITION (Lesson: If)
-            {
-                return b2rStops;
-            } 
-            else 
-            {
-                return r2bStops;
-            }
+            System.out.println();
+            System.out.println("============ CHOOSE ROUTE ============");
+            System.out.println("1. Bago Aplaya ---> Roxas Avenue Route");
+            System.out.println("2. Roxas Avenue ---> Bago Aplaya Route");
+            System.out.println();
+
+            int routeChoice = 0;
+
+            do {
+                System.out.print("\tEnter chosen route: ");
+
+                routeChoice = scan.nextInt();
+                scan.nextLine();
+
+                if (routeChoice == 1) {
+                    return b2rStops;
+                } else if (routeChoice == 2) {
+                    return r2bStops;
+                } else {
+                    System.out.println("Invalid Route. Try again...");
+                }
+            } while (true);
+
         }
 
         // 5.3 LOCATION INDEX FINDER (Lesson: Function + RegEx)
