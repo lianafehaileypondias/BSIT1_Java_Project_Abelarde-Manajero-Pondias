@@ -2,12 +2,14 @@ import java.util.*;
 import java.util.regex.*;
 import java.text.DecimalFormat;
 
+    // 0.0 CLASS DECLARATION (Lesson: Class)
     public class project 
     {
         public static void main(String[] args) 
         {
             Scanner scan = new Scanner(System.in);
 
+            // 1.0 LOGIN MENU DISPLAY
             System.out.println();
             System.out.println("======== LOGIN =======");
             System.out.println("1. Access with account");
@@ -16,6 +18,8 @@ import java.text.DecimalFormat;
             System.out.print("\tEnter choice: ");
             int choice = scan.nextInt();
             scan.nextLine();
+
+            // 1.1 LOGIN CHOICE (Lesson: If)
             if (choice == 1)
             {
                 userLogin(scan);
@@ -27,17 +31,20 @@ import java.text.DecimalFormat;
             }
         }
 
-        // 2. USER LOG-IN
+        // 2.0 USER LOG-IN (Lesson: Function)
         static void userLogin(Scanner scan)
         {
             boolean validEmail;
-            do
+            do // 2.1 EMAIL INPUT LOOP (Lesson: Do-while)
             {
                 System.out.println();
                 System.out.print("\tEnter E-mail: ");
                 String email = scan.nextLine();
+
+                // 2.2 EMAIL VALIDATION CALL (Lesson: Function + RegEx)
                 validEmail = validateEmail(email);
-                if (validEmail) // checks if email is valid to proceed to signing up user pin
+                
+                if (validEmail) // 2.3 EMAIL VALIDATION CHECK (Lesson: If)
                 {
                     System.out.println("Valid Email. Proceed...");
                     System.out.println();
@@ -49,10 +56,10 @@ import java.text.DecimalFormat;
                 }
             } 
             while (!validEmail);
-            validatePin(scan); // checks if pin is valid to proceed to next user
+            validatePin(scan); // 2.4 PIN VALIDATION CALL (Lesson: Function)
         }
 
-        // 2.1 VALIDATE EMAIL
+        // 2.5 VALIDATE EMAIL (Lesson: Function + RegEx)
         static boolean validateEmail(String email)
         {
             String pattern = "^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$"; // pattern = "user@example.com"
@@ -60,7 +67,7 @@ import java.text.DecimalFormat;
             return email.matches(pattern);
         }
 
-        // 2.1 VALIDATE PIN
+        // 2.6 VALIDATE PIN (Lesson: Function + RegEx + Do-while)
         static void validatePin(Scanner scan)
         {
             boolean isValidPin;
@@ -68,11 +75,13 @@ import java.text.DecimalFormat;
             {
                 System.out.print("\tEnter Pin (4-digit pin): ");
                 String userPin = scan.nextLine();
+
+                // 2.7 PIN PATTERN MATCHING (Lesson: RegEx)
                 String pinPattern = "^\\d{4}$"; // pattern requires exactly 4 digits
 
                 isValidPin = userPin.matches(pinPattern);
 
-                if (!isValidPin)
+                if (!isValidPin) // 2.8 PIN VALIDATION CHECK (Lesson: If)
                 {
                     System.out.println("Invalid Pin. Try again...");
                 }
@@ -83,37 +92,43 @@ import java.text.DecimalFormat;
             System.out.println();
         }
 
+        // 3.0 MAIN PROGRAM EXECUTION (Lesson: Function)
         static void runProgram(Scanner scan)
         {
             DecimalFormat df = new DecimalFormat("0.00");
-           
             boolean proceed = true;
             
-            printRouteMap();
+            printRouteMap(); // 3.1 ROUTE MAP DISPLAY (Lesson: Array)
 
-            do
+            do // 3.2 MAIN LOOP (Lesson: Do-while)
             {
+                // 3.3 ROUTE SELECTION (Lesson: Function + ArrayList)
                 ArrayList<String> route = askRoute(scan);
+
+                // 3.4 USER INPUT LOCATIONS
                 System.out.print("\tCurrent Location: ");
                 String currLoc = scan.nextLine();
                 System.out.print("\tDestination: ");
                 String desLoc = scan.nextLine();
 
+                // 3.5 LOCATION VALIDATION (Lesson: Function)
                 String validOrInvalid = validateLocs(route, currLoc, desLoc);
 
-
-
+                // 3.6 VALID ROUTE CONDITION (Lesson: If)
                 if (validOrInvalid.equals("Valid"))
                 {  
+                    // 3.7 DISTANCE COMPUTATION (Lesson: Function)
                     double distance = computeDistance(route, currLoc, desLoc);
                     System.out.println("Distance: " + df.format(distance) + " km");
 
+                    // 3.8 FARE COMPUTATION (Lesson: Function + Switch)
                     double fare = computeFare(distance, scan);
                     System.out.println(" ________________________");
                     System.out.print("| Fare: Php " + df.format(fare) );
                     System.out.println("\t|");
                     System.out.println("|________________________|"); 
 
+                    // 3.9 CONTINUE PROMPT
                     System.out.println();
                     System.out.print("\tWould you like to proceed? (Yes/No): ");
                     String proceedChoice = scan.nextLine();
@@ -121,6 +136,7 @@ import java.text.DecimalFormat;
                 }
                 else 
                 {
+                    // 3.10 RETRY PROMPT
                     System.out.print("\tTry again? (Yes/No): ");
                     String retry = scan.nextLine();
                     proceed = retry.equalsIgnoreCase("Yes");
@@ -129,11 +145,12 @@ import java.text.DecimalFormat;
             } while (proceed);
         }
 
-        //PRINT ROUTE MAP
+        // 4.0 ROUTE MAP DISPLAY (Lesson: 2D Array + Enums Concept)
         static void printRouteMap() {
-            String[][] routeMap = new String[12][2];
+            String[][] routeMap = new String[12][2]; // Lesson: Array
 
-            // B2R
+            // 4.1 ROUTE DATA INITIALIZATION (Enums-like fixed values)
+            // Bago-Roxas
             routeMap[0][0] = "BAGO APLAYA -> ROXAS AVENUE ROUTE";
             routeMap[1][0] = "Bago Aplaya";
             routeMap[2][0] = "Puan";
@@ -147,7 +164,7 @@ import java.text.DecimalFormat;
             routeMap[10][0] = "Almendras Gym";
             routeMap[11][0] = "Roxas Avenue";
 
-            // R2B
+            // Roxas-Bago
             routeMap[0][1] = "ROXAS AVENUE -> BAGO APLAYA ROUTE";
             routeMap[1][1] = "Roxas Avenue";
             routeMap[2][1] = "Almendras Gym";
@@ -161,10 +178,10 @@ import java.text.DecimalFormat;
             routeMap[10][1] = "Puan";
             routeMap[11][1] = "Bago";
 
-            // Column widths
-            int colWidth = 35;
+            int colWidth = 35; // Column widths
 
-            System.out.println();
+            // 4.2 TABLE DISPLAY
+            System.out.println(); 
             System.out.println("+" + "-".repeat(colWidth) + "+" + "-".repeat(colWidth) + "+");
 
             // Print each row with borders
@@ -174,10 +191,9 @@ import java.text.DecimalFormat;
             }
         }
     
-        // 1.1 ASK ROUTE
+        // 5.0 ROUTE SELECTION (Lesson: Function + ArrayList)
         static ArrayList<String> askRoute(Scanner scan)
         {
-            // Asks for the route to take //
             System.out.println();
             System.out.println("============ CHOOSE ROUTE ============");
             System.out.println("1. Bago Aplaya ---> Roxas Avenue Route");
@@ -187,7 +203,8 @@ import java.text.DecimalFormat;
             int routeChoice = scan.nextInt();
             scan.nextLine();
 
-            // List of locations under the Bago-Roxas Route //
+            /// 5.1 ROUTE LIST INITIALIZATION (Lesson: ArrayList)
+            // List of locations under the Bago-Roxas Route
             ArrayList<String> b2rStops = new ArrayList<>();
             b2rStops.add("Bago Aplaya"); 
             b2rStops.add("Puan");
@@ -201,7 +218,7 @@ import java.text.DecimalFormat;
             b2rStops.add("Almendras Gym");
             b2rStops.add("Roxas Avenue");
 
-            // List of locations under the Roxas-Bago Route //
+            // List of locations under the Roxas-Bago Route
             ArrayList<String> r2bStops = new ArrayList<>();
             r2bStops.add("Roxas Avenue");
             r2bStops.add("Almendras Gym");
@@ -215,7 +232,7 @@ import java.text.DecimalFormat;
             r2bStops.add("Puan");
             r2bStops.add("Bago Aplaya");
 
-            if (routeChoice == 1) 
+            if (routeChoice == 1) // 5.2 ROUTTE CHOICE CONDITION (Lesson: If)
             {
                 return b2rStops;
             } 
@@ -225,13 +242,14 @@ import java.text.DecimalFormat;
             }
         }
 
-        // for RegEx
+        // 5.3 LOCATION INDEX FINDER (Lesson: Function + RegEx)
         static int findLocationIndex(ArrayList<String> route, String input) 
         {
             for (int i = 0; i < route.size(); i++) 
             {
                 String stop = route.get(i);
 
+                // 5.4 Pattern Matching (Lesson: RegEx)
                 // Case-insensitive + partial match
                 Pattern p = Pattern.compile(".*" + Pattern.quote(input) + ".*", Pattern.CASE_INSENSITIVE);
                 Matcher m = p.matcher(stop);
@@ -244,12 +262,12 @@ import java.text.DecimalFormat;
             return -1;
         }
 
-        // 1.2 PRINT LOCATIONS //
+        // 5.5 LOCATION VALIDATION LOGIC (Lesson: Function + If)
         static String validateLocs(ArrayList<String> route, String currLoc, String desLoc)
         {
-
             int currIndex = findLocationIndex(route, currLoc);
             int desIndex = findLocationIndex(route, desLoc);
+            
             String validOrInvalid = "Valid";
 
             // to display correct name
@@ -280,6 +298,7 @@ import java.text.DecimalFormat;
             return validOrInvalid;
         }
 
+        // 6.0 DISTANCE COMPUTATION (Lesson: Function + If + Array + Map)
         static double computeDistance(ArrayList<String> route, String currLoc, String desLoc) 
         {
             int currIndex = findLocationIndex(route, currLoc);
@@ -295,12 +314,14 @@ import java.text.DecimalFormat;
 
             int stopDistance = desIndex - currIndex;
 
+            // 6.1 Distance Condition (Lesson: If)
             // If distance is <= 4 stops, keep old logic
             if (stopDistance <= 4) 
             {
                 return stopDistance;
             }
 
+            // 6.2 DISTANCE MAPPING (Lesson: Array/Map)
             // Otherwise, use mapped distances
             HashMap<String, Double> distMap = new HashMap<>();
 
@@ -340,6 +361,7 @@ import java.text.DecimalFormat;
             return stopDistance;
         }
 
+        // 7.0 FARE COMPUTATION (Lesson: Function + If + Switch)
         static double computeFare(double distance, Scanner scan)
         {
             double regFare = 12.00;
@@ -348,6 +370,7 @@ import java.text.DecimalFormat;
             double discAmount = 0;
             double fare = 0;
 
+            // 7.1 BASE FARE CONDITION (Lesson: If)
             if (distance <= 4)
             {
                 baseFare = regFare;
@@ -357,13 +380,14 @@ import java.text.DecimalFormat;
                 baseFare = regFare + (1.80 * distance);
             }
 
-            // Computation of Discount: type of passenger
+            // 7.2 PASSENGER TYPE SELECTION
             System.out.println();
             System.out.println("===== PASSENGER TYPE =====");
             System.out.println("- Regular (R)\n" + "- Student (St)\n" + "- Senior (Sr) \n" + "- PWD Passenger (PWD)\n");
             System.out.print("\tEnter choice: ");
             String passType = scan.nextLine().toLowerCase();
 
+            // 7.3 DISCOUNT SELECTION (Lesson: Switch)
             switch (passType)
             {
                 case "r":
@@ -383,10 +407,11 @@ import java.text.DecimalFormat;
                     break;
             }
 
+            // 7.4 FARE CALCULATION
             discAmount = baseFare - (baseFare * discRate);  
             fare = discAmount;
 
-            // round off to the nearest 25 centavos
+            // 7.5 FARE ROUNDING
             fare = Math.round(fare * 4) / 4.0;
 
             return fare;
